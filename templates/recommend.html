@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <div style="width: 100%; display: block">
   <div class="section-main" id="ingredients-main">
-    <h2 style="color: red; font-weight: bold">RECIPE To You</h2>
+    <h2 style="color: red; font-weight: bold; font-size:48px">RECIPE To You</h2>
 
     <div class="selected-ingredients"></div>
   </div>
@@ -18,8 +18,6 @@
   function get_ingredients() {
     let item_list = $("#selected-ingredients-list");
     item_list.append("<li>" + ing_list + "</li>");
-
-    //   ingredients();
     favo_recommend();
   }
 
@@ -176,4 +174,5 @@
     }
   }
 </script>
+<script src="/static/scripts/search_recipe.js"></script>
 {% endblock %} {% endblock %}

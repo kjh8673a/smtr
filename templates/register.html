@@ -1,8 +1,11 @@
 {% extends "base.html" %} {% block content %}
 <div class="main">
 
-  <div class="main_img">
+  <div class="register_img" style="width:50%;">
+ <img src="/static/images/img11.png" style="width:75%; height:400px; transform:scalex(-1);">
   </div>
+
+  
   <div class="register-layout">
 
     <form name="join_form" id="join-form">
@@ -13,13 +16,14 @@
             type="text"
             placeholder="아이디"
             id="username"
-            style="width: 50%"
+            style="width: 50%; border:2px solid black";
           />
         </label>
 
-        <button type="button" id="btn-idCheck" onclick="id_check()">
+        <button type="button" id="id_check_button" onclick="id_check()">
           중복 체크
         </button>
+        <i id="id_check_sucess" class="fas fa-check"></i>
       </div>
 
       <div class="input-group" id="user-email">
@@ -29,7 +33,7 @@
             type="text"
             placeholder="이메일"
             id="email_id"
-            style="width: 25%"
+            style="width: 25%; border:2px solid black"
           />
         </label>
         @
@@ -38,7 +42,7 @@
             class="register-input"
             type="text"
             id="email_add"
-            style="width: 40%"
+            style="width: 40%; border:2px solid black;"
           />
         </label>
 
@@ -56,6 +60,7 @@
             type="password"
             placeholder="비밀번호"
             id="password"
+            style="border:2px solid black"
           />
         </label>
       </div>
@@ -67,6 +72,7 @@
             type="password"
             placeholder="비밀번호 확인"
             id="re_password"
+            style="border:2px solid black"
           />
         </label>
       </div>
@@ -85,5 +91,10 @@
       </div>
     </div>
   </div>
+
+
 </div>
+{% block javascript %}
+  <script src="/static/scripts/register.js"></script>
+{% endblock %}
 {% endblock %}

@@ -1,26 +1,17 @@
 {% extends "base.html" %}{% block content %}
 <div class="title" style="text-align: center; margin: 20px; paddin: 20px">
-  <h2 style="font-size: 32px">My Page</h2>
+  <u><h2 style="font-size: 32px">My Page</h2></u>
 </div>
 <div class="main">
-  <div
-    class="user_main"
-    style="
-      border: 1px solid black;
-      width: 30%;
-      padding: 30px;
-      margin: 20px;
-      text-align: center;
-      align-items: center;
-    "
-  >
-    <img src="/static/images/show.png" alt="logo" style="width: 120px" />
+  <div class="user_main" style="position:relative">
+    <img src="/static/images/show.png" alt="logo" style="width: 200px" />
 
-    <div class="user"></div>
+    <div class="user">
+    </div>
+    <div class="btn_ask" style="left:30%; bottom:0; position:absolute;margin:0px auto">
 
-    <button class="btn-main" id="btn-requset" onclick="add_recipe()">
-      레시피 요청
-    </button>
+      <button class="btn-main" id="btn-requset" onclick="add_recipe()">요청</button>
+    </div>
   </div>
 
   <div class="star-list"></div>
@@ -91,5 +82,7 @@
     location.href = "/request";
   }
 </script>
+
+<script src="/static/scripts/search_recipe.js"></script>
 
 {% endblock %} {%endblock %}
