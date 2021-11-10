@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block content %}
+<div class="main">
+
+  <div class="main_img">
+  </div>
+  <div class="login-layout">
+
+    <div class="login-form">
+      <div class="input-group" id="user-id">
+        <label>
+          <input
+            class="login-input"
+            type="text"
+            placeholder="아이디"
+            id="user"
+          />
+        </label>
+      </div>
+      <div class="input-group" id="user-pw">
+        <label>
+          <input
+            class="login-input"
+            type="password"
+            placeholder="비밀번호"
+            id="password"
+          />
+        </label>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <div class="btn-item">
+        <button type="button" class="btn-main" id="btn-login" onclick="login()">
+          로그인
+        </button>
+      </div>
+
+      <div class="btn-item">
+        아직 계정이 없으신가요?
+        <a id="btn-register" onclick="location.href='/register'">
+          회원가입
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% block javascript %}
+<script>
+  function login() {
+    let user_id = $("#user").val();
+    let user_pw = $("#password").val();
+
+    $.ajax({
+      type: "POST",
+      url: "/login/check",
+      data: { userid_give: user_id, userpw_give: user_pw },
+      success: function (response) {
+        if (response["user_data"] == null) {
+          alert("아이디/비밀번호를 확인하세요");
+        } else {
+          window.location.href = "/";
+        }
+      },
+    });
+  }
+</script>
+{% endblock %} {% endblock %}

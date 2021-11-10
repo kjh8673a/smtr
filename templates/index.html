@@ -1,0 +1,125 @@
+{% extends "base.html" %} {% block content %}
+<style>
+  .header h1 {
+    color: white;
+  }
+</style>
+<div class="main">
+  <div class="main_text">
+    <div class="main_title">
+      <h1>Show</h1>
+      <h1>Me</h1>
+      <h1>The Recipe</h1>
+    </div>
+
+    <div class="main_make">
+      <div class="section-main" id="select-list">
+        <div class="input-group" id="select-item">
+          <label>
+            <input
+              type="text"
+              style="width: 60%"
+              placeholder="재료를 입력해 주세요!"
+              id="ingredient"
+            />
+          </label>
+          <button
+            type="button"
+            class="btn-main"
+            id="btn-select"
+            onclick="add_ingredient()"
+          >
+            선택
+          </button>
+
+          <button
+            type="button"
+            class="btn-main"
+            id="btn-reset"
+            onclick="delete_list()"
+          >
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="section-main" id="selected-list">
+        <div id="selected">
+          <h3 class="selected_title">선택한 재료 모음</h3>
+          <ul id="selected-item-list"></ul>
+        </div>
+      </div>
+
+      <div class="section-main" id="make-dishes">
+        <button
+          type="button"
+          class="btn-main"
+          id="btn-recommend"
+          onclick="to_recommend()"
+        >
+          요리 검색
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="main_img"></div>
+</div>
+
+{# {% block javascript %}
+<script>
+  let ing_list = [];
+  let count = 1;
+
+  function add_ingredient() {
+    let name = $("#ingredient").val();
+    if (name === "") {
+      alert("재료를 입력해주세요.");
+    } else {
+      let item = document.getElementById("ingredient").value;
+      console.log(item);
+      ing_list.push(item);
+
+      let selected_box = $("#selected");
+      selected_box.show();
+
+      let item_list = $("#selected-item-list");
+
+      let temp_html = `<li id="sel_item${count}">${item}<button class="btn-main del_item" onclick="delete_item(${count})"><i class="fas fa-times del_item"></i></button></li>`;
+      item_list.append(temp_html);
+
+      $("#ingredient").val("");
+      count++;
+    }
+  }
+
+  function delete_list() {
+    $("#selected-item-list").empty();
+    ing_list = [];
+  }
+
+  function delete_item(count) {
+    let del = "#sel_item" + String(count);
+    let del2 = $(del).text();
+    $(del).remove();
+    const idx = ing_list.indexOf(del2);
+    ing_list.splice(idx, 1);
+  }
+
+  function to_recommend() {
+    if (ing_list.length < 1) {
+      alert("재료 목록이 비었습니다.");
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/recommend/search",
+        data: { ing_list },
+        traditional: true,
+        success: function (response) {
+          console.log(response);
+        },
+      });
+      location.href = "/recommend";
+    }
+  }
+</script>
+{% endblock %} #} {% endblock %}

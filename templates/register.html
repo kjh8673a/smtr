@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block content %}
+<div class="main">
+
+  <div class="main_img">
+  </div>
+  <div class="register-layout">
+
+    <form name="join_form" id="join-form">
+      <div class="input-group" id="user-id">
+        <label>
+          <input
+            class="register-input"
+            type="text"
+            placeholder="아이디"
+            id="username"
+            style="width: 50%"
+          />
+        </label>
+
+        <button type="button" id="btn-idCheck" onclick="id_check()">
+          중복 체크
+        </button>
+      </div>
+
+      <div class="input-group" id="user-email">
+        <label>
+          <input
+            class="register-input"
+            type="text"
+            placeholder="이메일"
+            id="email_id"
+            style="width: 25%"
+          />
+        </label>
+        @
+        <label>
+          <input
+            class="register-input"
+            type="text"
+            id="email_add"
+            style="width: 40%"
+          />
+        </label>
+
+        <select name="email_sel" id="email_sel" onchange="change_email();">
+          <option value="">직접입력</option>
+          <option value="naver.com">naver</option>
+          <option value="gmail.com">gmail</option>
+        </select>
+      </div>
+
+      <div class="input-group pw-input" id="user-pw">
+        <label>
+          <input
+            class="register-input"
+            type="password"
+            placeholder="비밀번호"
+            id="password"
+          />
+        </label>
+      </div>
+
+      <div class="input-group pw-input" id="user-pw">
+        <label>
+          <input
+            class="register-input"
+            type="password"
+            placeholder="비밀번호 확인"
+            id="re_password"
+          />
+        </label>
+      </div>
+    </form>
+
+    <div class="btn-container">
+      <div class="btn-item">
+        <button
+          type="button"
+          class="btn-main"
+          id="btn-addUser"
+          onclick="form_check()"
+        >
+          회원가입
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
